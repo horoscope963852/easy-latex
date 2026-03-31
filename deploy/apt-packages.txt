@@ -1,0 +1,42 @@
+# Base TeX and language support
+ghostscript
+latexmk
+biber
+xindy
+poppler-utils
+texlive-base
+texlive-binaries
+texlive-font-utils
+texlive-fonts-extra
+texlive-fonts-extra-links
+texlive-fonts-recommended
+texlive-lang-chinese
+texlive-lang-cjk
+texlive-lang-japanese
+texlive-lang-korean
+texlive-lang-other
+texlive-lang-greek
+texlive-latex-base
+texlive-latex-extra
+texlive-latex-recommended
+texlive-luatex
+texlive-pictures
+texlive-plain-generic
+texlive-xetex
+texlive-bibtex-extra
+texlive-extra-utils
+texlive-pstricks
+texlive-science
+
+# Fonts
+fonts-font-awesome
+fonts-noto-cjk
+fonts-wqy-zenhei
+
+# Helpers used by common LaTeX packages and externalized workflows
+python3-pygments
+gnuplot
+graphviz
+asymptote
+inkscape
+imagemagick

@@ -1,0 +1,11 @@
+[Unit]
+Description=Run easy-latex cleanup hourly
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=1h
+AccuracySec=5m
+Unit=easy-latex-cleanup.service
+
+[Install]
+WantedBy=timers.target

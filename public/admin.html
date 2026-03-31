@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>easy-latex Admin</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body class="page-admin">
+    <header class="chrome-bar">
+      <div>
+        <p class="eyebrow" data-i18n="admin.eyebrow">System Control</p>
+        <h1 data-i18n="admin.title">easy-latex Admin</h1>
+      </div>
+      <div class="header-actions">
+        <button id="languageToggle" class="secondary" type="button">EN</button>
+        <a class="button-link secondary" href="/" data-i18n="admin.editor">Editor</a>
+        <button id="adminLogoutButton" class="secondary" type="button" data-i18n="actions.logout">Log Out</button>
+      </div>
+    </header>
+
+    <div id="adminStatus" class="status-banner info" data-i18n="admin.loading">Loading admin state…</div>
+
+    <main class="admin-layout">
+      <section id="adminSetupCard" class="panel hidden">
+        <h2 data-i18n="admin.setup_title">Create First Admin</h2>
+        <p class="muted" data-i18n="admin.setup_desc">This setup runs only once. After the first admin account exists, this page becomes the standard admin login.</p>
+        <form id="adminSetupForm" class="stack-form">
+          <label>
+            <span data-i18n="admin.admin_username">Admin Username</span>
+            <input name="username" type="text" autocomplete="username" required>
+          </label>
+          <label>
+            <span data-i18n="admin.password">Password</span>
+            <input name="password" type="password" autocomplete="new-password" required>
+          </label>
+          <button type="submit" data-i18n="admin.create_admin">Create Admin</button>
+        </form>
+      </section>
+
+      <section id="adminLoginCard" class="panel hidden">
+        <h2 data-i18n="admin.login_title">Admin Login</h2>
+        <form id="adminLoginForm" class="stack-form">
+          <label>
+            <span data-i18n="admin.admin_username">Admin Username</span>
+            <input name="username" type="text" autocomplete="username" required>
+          </label>
+          <label>
+            <span data-i18n="admin.password">Password</span>
+            <input name="password" type="password" autocomplete="current-password" required>
+          </label>
+          <button type="submit" data-i18n="actions.login">Log In</button>
+        </form>
+      </section>
+
+      <section id="adminDashboard" class="admin-dashboard hidden">
+        <section class="panel">
+          <div class="panel-header">
+            <h2 data-i18n="admin.settings_title">System Settings</h2>
+            <span id="adminIdentity" class="pill subtle"></span>
+          </div>
+          <div class="settings-row">
+            <div>
+              <h3 data-i18n="admin.user_system">User System</h3>
+              <p class="muted" data-i18n="admin.user_system_desc">When disabled, visitors can enter the editor directly as guests.</p>
+            </div>
+            <label class="toggle">
+              <input id="authToggle" type="checkbox">
+              <span id="authToggleLabel" data-i18n="admin.enabled">Enabled</span>
+            </label>
+          </div>
+          <div class="metric-row">
+            <div class="metric-card">
+              <span class="metric-label" data-i18n="admin.online_users">Online Users</span>
+              <strong id="onlineCount">0</strong>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label" data-i18n="admin.concurrent_cap">Concurrent Cap</span>
+              <strong>10</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2 data-i18n="admin.normal_users">Normal Users</h2>
+          </div>
+          <form id="createUserForm" class="stack-form compact-form">
+            <label>
+              <span data-i18n="login.username">Username</span>
+              <input name="username" type="text" required>
+            </label>
+            <label>
+              <span data-i18n="login.password">Password</span>
+              <input name="password" type="password" required>
+            </label>
+            <button type="submit" data-i18n="admin.create_user">Create User</button>
+          </form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="admin.user">User</th>
+                  <th data-i18n="admin.status">Status</th>
+                  <th data-i18n="admin.projects">Projects</th>
+                  <th data-i18n="admin.usage">Usage</th>
+                  <th data-i18n="admin.actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2 data-i18n="admin.projects">Projects</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="admin.project">Project</th>
+                  <th data-i18n="admin.owner">Owner</th>
+                  <th data-i18n="admin.engine">Engine</th>
+                  <th data-i18n="admin.main_file">Main File</th>
+                  <th data-i18n="admin.compile_mode">Compile Mode</th>
+                </tr>
+              </thead>
+              <tbody id="projectsTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/static/admin.js"></script>
+  </body>
+</html>

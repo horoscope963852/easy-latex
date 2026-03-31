@@ -1,0 +1,21 @@
+[Unit]
+Description=easy-latex web application
+After=network.target
+
+[Service]
+Type=simple
+User=easylatex
+Group=easylatex
+WorkingDirectory=/opt/easy-latex
+EnvironmentFile=-/etc/easy-latex/easy-latex.env
+ExecStart=/usr/bin/node /opt/easy-latex/src/server.js
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/easy-latex
+
+[Install]
+WantedBy=multi-user.target

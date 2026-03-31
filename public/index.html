@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>easy-latex</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body class="page-shell">
+    <header class="chrome-bar">
+      <div>
+        <p class="eyebrow" data-i18n="app.eyebrow">Online LaTeX Workspace</p>
+        <h1>easy-latex</h1>
+      </div>
+      <div class="header-actions">
+        <span id="sessionBadge" class="pill"></span>
+        <span id="quotaBadge" class="pill subtle"></span>
+        <button id="languageToggle" class="secondary" type="button">中文</button>
+        <button id="helpButton" class="secondary" type="button" data-i18n="actions.help">Help</button>
+        <button id="loginButton" class="secondary" type="button" data-i18n="actions.login">Log In</button>
+        <button id="logoutButton" class="secondary" type="button" data-i18n="actions.logout">Log Out</button>
+        <button id="adminButton" class="secondary" type="button" data-i18n="actions.admin">Admin</button>
+      </div>
+    </header>
+
+    <div id="statusBanner" class="status-banner info" data-i18n="app.loading_workspace">Loading workspace…</div>
+
+    <section class="control-deck">
+      <div class="menu-strip">
+        <div class="menu-cluster">
+          <button id="projectMenuButton" class="secondary" type="button" data-i18n="app.project_menu">Projects</button>
+          <button id="filesMenuButton" class="secondary" type="button" data-i18n="app.files_menu">Files</button>
+          <button id="buildMenuButton" class="secondary" type="button" data-i18n="app.build_menu">Build</button>
+        </div>
+        <div class="menu-cluster">
+          <button id="saveButton" class="secondary" type="button" data-i18n="actions.save">Save</button>
+          <button id="compileButton" type="button" data-i18n="actions.compile">Compile</button>
+          <button id="exportButton" class="secondary" type="button" data-i18n="actions.export_pdf">Export PDF</button>
+        </div>
+      </div>
+
+      <div id="projectMenuPanel" class="menu-panel">
+        <div class="menu-panel-grid">
+          <div class="submenu-bar">
+            <button id="projectSubButtonSelect" class="submenu-button secondary" type="button" data-i18n="app.project_select">Select</button>
+            <button id="projectSubButtonManage" class="submenu-button secondary" type="button" data-i18n="app.project_manage">Manage</button>
+          </div>
+          <div id="projectSubSectionSelect" class="submenu-section">
+            <label class="compact-field">
+              <span data-i18n="app.project">Project</span>
+              <select id="projectSelect"></select>
+            </label>
+          </div>
+          <div id="projectSubSectionManage" class="submenu-section hidden">
+            <div class="menu-actions">
+              <button id="newProjectButton" type="button" data-i18n="actions.new_project">New Project</button>
+              <button id="renameProjectButton" class="secondary" type="button" data-i18n="actions.rename">Rename</button>
+              <button id="deleteProjectButton" class="secondary danger" type="button" data-i18n="actions.delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="filesMenuPanel" class="menu-panel">
+        <div class="menu-panel-grid">
+          <div class="submenu-bar">
+            <button id="filesSubButtonActions" class="submenu-button secondary" type="button" data-i18n="app.file_actions">Actions</button>
+            <button id="filesSubButtonExplorer" class="submenu-button secondary" type="button" data-i18n="app.file_explorer">Explorer</button>
+          </div>
+          <div id="filesSubSectionActions" class="submenu-section">
+            <div class="menu-actions">
+              <button id="newFileButton" type="button" data-i18n="actions.new_file">New File</button>
+              <button id="deleteFileButton" class="secondary danger" type="button" data-i18n="actions.delete_file">Delete File</button>
+              <button id="uploadFilesButton" class="secondary" type="button" data-i18n="actions.upload_files">Upload Files</button>
+              <button id="uploadFolderButton" class="secondary" type="button" data-i18n="actions.upload_folder">Upload Folder</button>
+            </div>
+          </div>
+          <div id="filesSubSectionExplorer" class="submenu-section hidden">
+            <div class="menu-tree-shell">
+              <div class="sidebar-caption" data-i18n="app.project_files">Project Files</div>
+              <div id="fileTree" class="file-tree"></div>
+            </div>
+          </div>
+          <input id="fileUploadInput" type="file" multiple hidden>
+          <input id="folderUploadInput" type="file" multiple webkitdirectory directory hidden>
+        </div>
+      </div>
+
+      <div id="buildMenuPanel" class="menu-panel">
+        <div class="menu-panel-grid build-panel-grid">
+          <div class="submenu-bar">
+            <button id="buildSubButtonSettings" class="submenu-button secondary" type="button" data-i18n="app.build_settings">Settings</button>
+            <button id="buildSubButtonLogs" class="submenu-button secondary" type="button" data-i18n="app.build_logs">Logs</button>
+          </div>
+          <div id="buildSubSectionSettings" class="submenu-section build-settings-section">
+            <div class="build-config-grid">
+              <label class="compact-field">
+                <span data-i18n="app.engine">Engine</span>
+                <select id="engineSelect">
+                  <option value="pdflatex">pdflatex</option>
+                  <option value="xelatex">xelatex</option>
+                  <option value="lualatex">lualatex</option>
+                </select>
+              </label>
+              <label class="compact-field">
+                <span data-i18n="app.main_file">Main File</span>
+                <select id="mainFileSelect"></select>
+              </label>
+              <label class="toggle">
+                <input id="autoCompileToggle" type="checkbox">
+                <span data-i18n="app.auto_compile">Auto compile</span>
+              </label>
+              <span id="compileModeBadge" class="pill subtle"></span>
+              <span id="compileSummary" class="pill subtle"></span>
+            </div>
+          </div>
+          <div id="buildSubSectionLogs" class="submenu-section hidden build-logs-section">
+            <div class="build-log-shell">
+              <h2 data-i18n="app.compile_output">Compile Output</h2>
+              <ul id="compileErrors" class="error-list"></ul>
+              <pre id="compileLog"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="two-pane-layout">
+      <section class="pane-card editor-pane-card">
+        <div class="pane-header">
+          <div class="inline-controls">
+            <h2 data-i18n="app.tex_source">TeX Source</h2>
+            <span id="currentFileLabel" class="file-pill" data-i18n="app.no_file_selected">No file selected</span>
+            <a id="fileAccessLink" class="button-link secondary hidden" target="_blank" rel="noopener noreferrer" data-i18n="app.open_file">Open File</a>
+          </div>
+          <span id="editorStateLabel" class="pill subtle" data-i18n="app.read_only">Read only</span>
+        </div>
+        <textarea id="editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+      </section>
+
+      <section class="pane-card preview-pane-card">
+        <div class="pane-header">
+          <h2 data-i18n="app.pdf_preview">PDF Preview</h2>
+          <span id="previewLabel" class="pill subtle" data-i18n="app.no_preview">No preview yet</span>
+        </div>
+        <div class="preview-frame">
+          <iframe id="previewFrame" title="PDF preview"></iframe>
+          <div id="previewPlaceholder" class="empty-state" data-i18n="app.preview_placeholder">
+            Compile a project to see the generated PDF here.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="guideModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+      <div class="modal-card guide-card">
+        <p class="eyebrow" data-i18n="guide.eyebrow">First Login Guide</p>
+        <h2 id="guideTitle" data-i18n="guide.title">Welcome to easy-latex</h2>
+        <p class="muted" data-i18n="guide.intro">This quick guide introduces the main features and the recommended workflow.</p>
+        <ol class="guide-list">
+          <li data-i18n="guide.step_project">Open the top Project menu to switch, create, rename, or delete projects.</li>
+          <li data-i18n="guide.step_files">Open the Files menu to upload `.tex` files, create new files, and choose the document you want to edit.</li>
+          <li data-i18n="guide.step_build">Open the Build menu to change the engine, select the main `.tex` file, inspect compile logs, and enable auto compile.</li>
+          <li data-i18n="guide.step_export">Use Compile to refresh the right-side PDF preview, then Export PDF to download or save the result.</li>
+          <li data-i18n="guide.step_shortcuts">Shortcuts: `Ctrl/Cmd + S` saves, `Ctrl/Cmd + Enter` compiles, `Ctrl/Cmd + Shift + E` exports, and `Alt + 1/2/3` opens the top menus.</li>
+        </ol>
+        <p class="muted" data-i18n="guide.tip">For Chinese documents, XeLaTeX is the default and is usually the right choice.</p>
+        <div class="modal-actions">
+          <button id="guideStartButton" type="button" data-i18n="guide.start">Start Using easy-latex</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="exportModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="exportTitle">
+      <div class="modal-card">
+        <h2 id="exportTitle" data-i18n="app.export_title">Export Compiled PDF</h2>
+        <p id="exportDescription" data-i18n="app.export_description">Choose how to handle the latest compiled PDF.</p>
+        <div class="modal-actions">
+          <button id="exportDownloadButton" type="button" data-i18n="actions.download">Download</button>
+          <button id="exportSaveButton" type="button" data-i18n="actions.save_to_cloud">Save to Cloud</button>
+          <button id="exportCancelButton" class="secondary" type="button" data-i18n="actions.cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>

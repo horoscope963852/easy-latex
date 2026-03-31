@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>easy-latex Login</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body class="page-auth">
+    <main class="auth-card">
+      <div class="inline-controls auth-toolbar">
+        <button id="languageToggle" class="secondary" type="button">EN</button>
+      </div>
+      <p class="eyebrow" data-i18n="login.eyebrow">Username + Password Only</p>
+      <h1 data-i18n="login.title">User Login</h1>
+      <p id="loginDescription" class="muted" data-i18n="login.description">
+        Sign in to access your projects and save compiled PDFs into cloud storage.
+      </p>
+
+      <form id="loginForm" class="stack-form">
+        <label>
+          <span data-i18n="login.username">Username</span>
+          <input id="usernameInput" name="username" type="text" autocomplete="username" required>
+        </label>
+        <label>
+          <span data-i18n="login.password">Password</span>
+          <input id="passwordInput" name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit" data-i18n="actions.login">Log In</button>
+      </form>
+
+      <div class="inline-links">
+        <a href="/" data-i18n="login.back">Back to Editor</a>
+        <a href="/admin" data-i18n="actions.admin">Admin</a>
+      </div>
+
+      <div id="loginStatus" class="status-banner info" data-i18n="login.status.checking">Checking current access mode…</div>
+    </main>
+
+    <script type="module" src="/static/login.js"></script>
+  </body>
+</html>
