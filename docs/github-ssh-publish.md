@@ -1,5 +1,7 @@
 # GitHub Publish via SSH
 
+[中文版本](github-ssh-publish.zh-CN.md)
+
 These steps assume the repository is already prepared locally.
 
 ## 1. Create an SSH key on the server

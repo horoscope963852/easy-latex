@@ -2,6 +2,8 @@
 
 `easy-latex` is a single-host online LaTeX editor/compiler for direct `IP:9999` access. It includes the frontend, backend, systemd units, and bootstrap scripts needed to reproduce the running service on a Debian server.
 
+[中文文档 / Chinese documentation](README.zh-CN.md)
+
 ## What This Repository Publishes
 
 - Frontend and backend source code in one repository
@@ -123,7 +125,33 @@ After install, the verifier runs a small XeLaTeX + bibliography smoke test. You 
 sudo /opt/easy-latex/scripts/verify-install.sh
 ```
 
+## Docker Deployment
+
+An optional Docker-based reproduction path is also included:
+
+```bash
+docker compose up -d --build
+```
+
+See:
+
+- [docker-deploy.md](docs/docker-deploy.md)
+- [docker-deploy.zh-CN.md](docs/docker-deploy.zh-CN.md)
+
+## Versioning and Releases
+
+- Versioning follows SemVer
+- Git tags use the form `vX.Y.Z`
+- Release workflow details:
+  [release-process.md](docs/release-process.md)
+  and
+  [release-process.zh-CN.md](docs/release-process.zh-CN.md)
+
 ## Extra Documentation
 
 - Runtime baseline: [runtime-baseline.md](docs/runtime-baseline.md)
+- Runtime baseline (Chinese): [runtime-baseline.zh-CN.md](docs/runtime-baseline.zh-CN.md)
 - GitHub SSH publish flow: [github-ssh-publish.md](docs/github-ssh-publish.md)
+- GitHub SSH publish flow (Chinese): [github-ssh-publish.zh-CN.md](docs/github-ssh-publish.zh-CN.md)
+- Changelog: [CHANGELOG.md](CHANGELOG.md)
+- Changelog (Chinese): [CHANGELOG.zh-CN.md](CHANGELOG.zh-CN.md)

@@ -1,5 +1,7 @@
 # Runtime Baseline
 
+[中文版本](runtime-baseline.zh-CN.md)
+
 This repository is intended to reproduce the current single-host deployment shape of `easy-latex`.
 
 ## Tested Host Profile

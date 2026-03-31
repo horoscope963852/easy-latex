@@ -1,0 +1,19 @@
+services:
+  easy-latex:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: easy-latex
+    restart: unless-stopped
+    env_file:
+      - .env.example
+    environment:
+      EASY_LATEX_DATA_DIR: /var/lib/easy-latex
+      EASY_LATEX_PORT: 9999
+    ports:
+      - "9999:9999"
+    volumes:
+      - easy_latex_data:/var/lib/easy-latex
+
+volumes:
+  easy_latex_data:

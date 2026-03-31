@@ -4,6 +4,18 @@
   "private": true,
   "type": "module",
   "description": "Single-host online LaTeX editor and compiler with optional auth.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horoscope963852/easy-latex.git"
+  },
+  "homepage": "https://github.com/horoscope963852/easy-latex#readme",
+  "bugs": {
+    "url": "https://github.com/horoscope963852/easy-latex/issues"
+  },
+  "engines": {
+    "node": ">=20 <21"
+  },
   "scripts": {
     "start": "node src/server.js",
     "cleanup": "node scripts/cleanup.js"
