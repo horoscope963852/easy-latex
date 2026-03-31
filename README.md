@@ -38,7 +38,7 @@ This repository does **not** include runtime state:
 Use this repository as the source of truth, and deploy with:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/horoscope963852/easy-latex.git
 cd easy-latex
 sudo ./scripts/bootstrap-server.sh
 ```
@@ -56,7 +56,7 @@ Supported baseline:
 Run:
 
 ```bash
-git clone <your-repo-url> /root/easy-latex
+git clone https://github.com/horoscope963852/easy-latex.git /root/easy-latex
 cd /root/easy-latex
 sudo ./scripts/bootstrap-server.sh
 ```
